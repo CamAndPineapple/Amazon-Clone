@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const ejs = require('ejs');
 const engine = require('ejs-mate');
 const User = require('./app/models/user');
+const Category = require('./app/models/category');
 const config = require('./app/config/config');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -43,18 +44,31 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-// give every route the 'user' object
+// Expose every route to the 'user' object
 app.use(function(req, res, next){
   res.locals.user = req.user;
   next();
 });
 
+// Find all categories and expose to routes
+app.use(function(req, res, next) {
+  Category.find({}, function(err, categories) {
+    if (err) return next(err);
+    res.locals.categories = categories;
+    next();
+  });
+});
+
 // Routes
 const mainRoutes = require('./app/routes/main');
 const userRoutes = require('./app/routes/user');
+const adminRoutes = require('./app/routes/admin');
+const apiRoutes = require('./api/api');
 
 app.use(mainRoutes);
 app.use(userRoutes);
+app.use(adminRoutes);
+app.use('/api', apiRoutes);
 
 
 // Start Server
