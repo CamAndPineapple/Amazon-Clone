@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt-nodejs');
-const crypto = require('crypto');
-const Schema = mongoose.Schema;
+var mongoose = require('mongoose');
+var bcrypt = require('bcrypt-nodejs');
+var crypto = require('crypto');
+var Schema = mongoose.Schema;
 
 var UserSchema = Schema({
   email: { type: String, unique: true, lowercase: true},
@@ -16,7 +16,7 @@ var UserSchema = Schema({
   history: [{
     date: Date,
     paid: { type: Number, default: 0},
-    // item: { type: Schema.Type.ObjectId, ref: ''}
+    item: { type: Schema.Types.ObjectId, ref: 'Product'}
   }]
 });
 

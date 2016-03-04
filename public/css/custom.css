@@ -1,3 +1,25 @@
 body {
   padding-top: 100px;
 }
+.product-image {
+  width: 100%
+}
+#navbar-gap {
+  background: url('http://www.wheretraveler.com/sites/default/files/styles/main_slider/public/San-Francisco-shutterstock_121582312.jpg?itok=sGTj8sv2');
+  color: white;
+  text-shadow: 1px 1px black;
+  background-size: cover;
+  margin-top: -5%;
+}
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  height: 50px;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  color: #fff;
+}

@@ -13,6 +13,7 @@ const session = require('express-session');
 const flash = require('express-flash');
 const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
+const cartLength = require('./app/middleware/middleware');
 
 
 // Setup
@@ -50,6 +51,8 @@ app.use(function(req, res, next){
   next();
 });
 
+app.use(cartLength);
+
 // Find all categories and expose to routes
 app.use(function(req, res, next) {
   Category.find({}, function(err, categories) {
@@ -75,4 +78,5 @@ app.use('/api', apiRoutes);
 app.listen(port, function(err) {
   if (err) throw err;
   console.log("Server is running at http://localhost:" + port);
+
 });

@@ -1,9 +1,10 @@
-const router = require('express').Router();
-const Category = require('../models/category');
+var router = require('express').Router();
+var Category = require('../models/category');
 
 router.get('/add-category', function(req, res, next) {
   res.render('admin/add-category', { message: req.flash('success') });
 });
+
 
 // Create new instance of Category, add name property and save to db
 router.post('/add-category', function(req, res, next) {
@@ -15,6 +16,7 @@ router.post('/add-category', function(req, res, next) {
     req.flash('success', 'Successfully added a category');
     return res.redirect('/add-category');
   });
-});
+})
+
 
 module.exports = router;
