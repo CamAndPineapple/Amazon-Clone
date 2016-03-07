@@ -19,7 +19,7 @@ const cartLength = require('./app/middleware/middleware');
 // Setup
 const app = express();
 const port = process.env.PORT || config.port;
-mongoose.connect(config.db, function(err) {
+mongoose.connect(process.env.MONGOLAB_URI, function(err) {
   if (err) {
     console.log(err);
   } else {
