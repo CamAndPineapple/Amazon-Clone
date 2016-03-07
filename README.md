@@ -1,4 +1,4 @@
-# Amazon-Clone
+# Faycommerce (fake-commerce)
 
 An Amazon-esque ecommerce site that features user signup/login authentication, mock product pages and payment processing.
 
