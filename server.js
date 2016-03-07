@@ -6,7 +6,7 @@ const ejs = require('ejs');
 const engine = require('ejs-mate');
 const User = require('./app/models/user');
 const Category = require('./app/models/category');
-const config = require('./app/config/config');
+const config = require('./app/config/config')[process.env.NODE_ENV || 'development'];
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -19,7 +19,7 @@ const cartLength = require('./app/middleware/middleware');
 // Setup
 const app = express();
 const port = process.env.PORT || config.port;
-mongoose.connect(process.env.MONGOLAB_URI, function(err) {
+mongoose.connect(config.db, function(err) {
   if (err) {
     console.log(err);
   } else {
